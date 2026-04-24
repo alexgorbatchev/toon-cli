@@ -6,12 +6,20 @@
 
 - Go 1.26 or newer to build from source
 
-## Quick start
+## Installation
 
-Run `toon` directly from a checkout:
+Build the `toon` CLI from a checkout and place it on your `PATH`:
 
 ```sh
-printf '{"name":"Ada","id":1}\n' | go run ./cmd/toon
+go build -o ./toon ./cmd/toon
+```
+
+## Quick start
+
+Once `toon` is installed, run it directly:
+
+```sh
+printf '{"name":"Ada","id":1}\n' | toon
 ```
 
 Output:
@@ -19,12 +27,6 @@ Output:
 ```text
 name: Ada
 id: 1
-```
-
-Or use the checked-in `justfile`:
-
-```sh
-printf '{"name":"Ada","id":1}\n' | just run
 ```
 
 ## Usage
@@ -35,18 +37,12 @@ printf '{"name":"Ada","id":1}\n' | just run
 toon < input.json > output.toon
 ```
 
-From a local checkout:
-
-```sh
-go run ./cmd/toon < input.json > output.toon
-```
-
 ### JSONC
 
 `toon` accepts JSONC as a single top-level document.
 
 ```sh
-printf '{\n  // preserve field order\n  "name": "Ada",\n  "languages": ["go", "toon"],\n}\n' | go run ./cmd/toon
+printf '{\n  // preserve field order\n  "name": "Ada",\n  "languages": ["go", "toon"],\n}\n' | toon
 ```
 
 ### NDJSON
@@ -54,7 +50,7 @@ printf '{\n  // preserve field order\n  "name": "Ada",\n  "languages": ["go", "t
 NDJSON input is decoded as one top-level array before TOON encoding.
 
 ```sh
-printf '{"id":1,"name":"Ada"}\n{"id":2,"name":"Bob"}\n' | go run ./cmd/toon
+printf '{"id":1,"name":"Ada"}\n{"id":2,"name":"Bob"}\n' | toon
 ```
 
 Output:
@@ -70,7 +66,7 @@ Output:
 Local builds report `toon dev`:
 
 ```sh
-go run ./cmd/toon --version
+toon --version
 ```
 
 Tagged release builds inject the runtime version through GoReleaser, so `--version` matches the Git tag.
@@ -109,3 +105,7 @@ Pushing a tag that matches `v*` runs the release workflow, which:
 - verifies the module with `go mod tidy -diff`, `go build ./...`, `go vet ./...`, `go test -race ./...`, and `golangci-lint run`
 - builds release archives with GoReleaser
 - injects the runtime version into `main.version` for `toon --version`
+
+## License
+
+This project is licensed under the MIT License. See [`LICENSE`](./LICENSE).
