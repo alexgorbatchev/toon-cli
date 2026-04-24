@@ -2,21 +2,6 @@
 
 `toon` reads JSON, JSONC, or NDJSON from stdin and writes TOON to stdout using [`toon-go`](https://github.com/toon-format/toon-go).
 
-## Installation
-
-Download the archive for your platform from [GitHub Releases](https://github.com/alexgorbatchev/toon-cli/releases), extract it, and place `toon` on your `PATH`.
-
-Release archives use this naming scheme:
-
-```sh
-toon-cli_<version>_<os>_<arch>.tar.gz
-```
-
-Published builds target:
-
-- Linux `amd64`
-- Linux `arm64`
-
 ## Quick start
 
 Once `toon` is installed, run it directly:
