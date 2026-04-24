@@ -2,17 +2,21 @@
 
 `toon` reads JSON, JSONC, or NDJSON from stdin and writes TOON to stdout using [`toon-go`](https://github.com/toon-format/toon-go).
 
-## Requirements
-
-- Go 1.26 or newer to build from source
-
 ## Installation
 
-Build the `toon` CLI from a checkout and place it on your `PATH`:
+Download the archive for your platform from [GitHub Releases](https://github.com/alexgorbatchev/toon-cli/releases), extract it, and place `toon` on your `PATH`.
+
+Release archives use this naming scheme:
 
 ```sh
-go build -o ./toon ./cmd/toon
+toon-cli_<version>_<os>_<arch>.tar.gz
 ```
+
+Published builds target:
+
+- Linux `amd64`
+- Linux `arm64`
+- macOS `arm64`
 
 ## Quick start
 
@@ -76,6 +80,8 @@ Tagged release builds inject the runtime version through GoReleaser, so `--versi
 `toon` preserves integer precision for JSON-style inputs. Integer literals beyond the IEEE-754 safe range are emitted as quoted decimal strings so their digits are not rounded during TOON encoding.
 
 ## Development
+
+Go 1.26 or newer is only required for local development or building from source.
 
 Common local commands are available through `just`:
 
