@@ -2,4 +2,4 @@
 .workspaces/
 dist/
 coverage.out
-toon
+/toon
