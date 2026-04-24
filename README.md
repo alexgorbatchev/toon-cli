@@ -16,7 +16,6 @@ Published builds target:
 
 - Linux `amd64`
 - Linux `arm64`
-- macOS `arm64`
 
 ## Quick start
 
