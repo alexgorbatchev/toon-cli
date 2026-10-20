@@ -1,33 +1,37 @@
 default:
-  @just --list
+    @just --list
 
 run:
-  if [ -t 0 ]; then go run ./cmd/toon --help; else go run ./cmd/toon; fi
+    if [ -t 0 ]; then go run ./cmd/toon --help; else go run ./cmd/toon; fi
 
 help:
-  go run ./cmd/toon --help
+    go run ./cmd/toon --help
 
 version:
-  go run ./cmd/toon --version
+    go run ./cmd/toon --version
 
 test:
-  go test ./...
+    go test ./...
 
 test-focused:
-  go test ./internal/input ./internal/cli
+    go test ./internal/input ./internal/cli
 
 vet:
-  go vet ./...
+    go vet ./...
 
 lint:
-  golangci-lint run
+    golangci-lint run
 
 build:
-  go build ./...
+    go build ./...
 
 verify:
-  go mod tidy -diff
-  go build ./...
-  go vet ./...
-  go test -race ./...
-  golangci-lint run
+    go mod tidy -diff
+    go build ./...
+    go vet ./...
+    go test -race ./...
+    golangci-lint run
+
+# Download project dependencies for local development
+setup:
+    go mod download
